@@ -112,4 +112,4 @@ echo 'max duration: ', $max_duration, "\n";
 
 sort($duration_arr);
 echo 'p95: ', $duration_arr[floor(0.95 * count($duration_arr))], "\n";
-echo 'p99:', $duration_arr[floor(0.95 * count($duration_arr))], "\n";
+echo 'p99:', $duration_arr[floor(0.99 * count($duration_arr))], "\n";
