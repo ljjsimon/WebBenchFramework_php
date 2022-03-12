@@ -1,0 +1,7 @@
+{
+    "require": {
+        "react/event-loop": "^1.2",
+        "react/http": "^1.6",
+        "clue/block-react": "^1.5"
+    }
+}
