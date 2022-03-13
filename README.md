@@ -1,16 +1,18 @@
-WebBenchFramework useing [ReactPHP](https://github.com/reactphp)
+WebBenchFramework useing [Guzzle](https://github.com/guzzle/guzzle)
 
 download all files, install libraries
 ```sh
 composer install
 ```
 
-Modify file config.php, mainly put your token-generate function in it. Then run
+Modify file main.php, mainly put your token-generate function in $getRequestParams. Then run
 ```sh
 php main.php
 ```
 
-every field of record is:
+see https://docs.guzzlephp.org/en/stable/request-options.html#form-params for request_params
+
+every field of log record is:
  * 0: success, fail
  * 1: start time
  * 2: finish time
