@@ -29,10 +29,9 @@ $getRequestParams = function() : array
         'url' => $url,
         'method' => $method,
         'options' => [
-            'data' => $data,
             'headers' => $headers,
-            //'form_params' => [], // will add application/x-www-form-urlencoded to header
-            //'json' => [], // will add application/json to header
+            //'form_params' => $data, // will add application/x-www-form-urlencoded to header
+            //'json' => $data, // will add application/json to header
             'multipart' => [ // will add multipart/form-data to header
                 [
                     'name' => 'a',
