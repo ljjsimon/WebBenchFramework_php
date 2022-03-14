@@ -15,7 +15,7 @@ $config = [
 /**
  * return request params
  */
-$getRequestParams = function() : array
+$getRequestParams = function(int $index) : array
 {
     $url = 'http://localhost:8088/';
     $method = 'POST';
@@ -50,7 +50,7 @@ $getRequestParams = function() : array
  * callback on success
  * @return will be in log
  */
-$onSuccess = function (Psr\Http\Message\ResponseInterface $response, float $duration) : string
+$onSuccess = function (int $index, Psr\Http\Message\ResponseInterface $response, float $duration) : string
 {
     return '';
 };
@@ -59,7 +59,7 @@ $onSuccess = function (Psr\Http\Message\ResponseInterface $response, float $dura
  * callback on error
  * @return will in log
  */
-$onError = function (Exception $e) : string
+$onError = function (int $index, Exception $e) : string
 {
     return '';
 };

@@ -34,7 +34,7 @@ class Core
         ]);
 
         for ($i = 0; $i < $config['concurrency']; $i++) {
-            $request_param = $param['getRequestParams']();
+            $request_param = $param['getRequestParams']($i);
             $options = $request_param['options'];
             /*
             if($options['multipart']){
@@ -48,7 +48,7 @@ class Core
 
             $start = microtime(true);
             $promises[] = $client->requestAsync($request_param['method'], $request_param['url'], $options)->then(
-                function (Response $response) use (&$param, &$records, $start){
+                function (Response $response) use (&$param, &$records, $i, $start){
                     // this is delivered each successful response
                     $fin = microtime(true);
                     $record = [
@@ -66,14 +66,14 @@ class Core
                     }
                     if(is_callable($param['onSuccess'])){
                         try{
-                            $record[] = $param['onSuccess']($response, $fin - $start);
+                            $record[] = $param['onSuccess']($i, $response, $fin - $start);
                         } catch (\Exception $e){
                             //
                         }
                     }
                     $records[] = $record;
                 },
-                function (Exception $e) use (&$param, &$records, $start) {
+                function (Exception $e) use (&$param, &$records, $i, $start) {
                     // this is delivered each failed request
                     $fin = microtime(true);
                     $record = [
@@ -85,7 +85,7 @@ class Core
 
                     if(is_callable($param['onError'])){
                         try{
-                            $record[] = $param['onError']($e);
+                            $record[] = $param['onError']($i, $e);
                         } catch (\Exception $e1){
                             //
                         }
